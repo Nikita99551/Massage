@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="0; url=variants/v4/">
+  <title>Денис — массаж с выездом по Москве</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #F5F1ED;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .header h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      color: #2C2C2C;
+    }
+
+    .header p {
+      font-size: 1.1rem;
+      color: #6B6B6B;
+      line-height: 1.6;
+    }
+
+    .variants-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .variant-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s cubic-bezier(.22,1,.36,1), box-shadow 0.3s cubic-bezier(.22,1,.36,1);
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .variant-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .variant-preview {
+      width: 100%;
+      height: 240px;
+      background: linear-gradient(135deg, #7A9B8E 0%, #5F7D71 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .variant-preview::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/></svg>');
+      opacity: 0.3;
+    }
+
+    .variant-number {
+      font-size: 5rem;
+      font-weight: 300;
+      color: white;
+      opacity: 0.9;
+      position: relative;
+      z-index: 1;
+    }
+
+    .variant-info {
+      padding: 2rem;
+    }
+
+    .variant-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #2C2C2C;
+    }
+
+    .variant-description {
+      font-size: 0.95rem;
+      color: #6B6B6B;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .variant-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .feature-tag {
+      padding: 0.4rem 0.8rem;
+      background: #E8E3DD;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #2C2C2C;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: #9A9A9A;
+      font-size: 0.9rem;
+    }
+
+    .footer-note a {
+      color: #7A9B8E;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .footer-note a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .variants-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <p style="font-family: sans-serif; padding: 24px;">Открываю сайт Дениса… <a href="variants/v4/">Перейти, если страница не открылась автоматически</a></p>
+  <div class="container">
+    <div class="header">
+      <h1>Массаж на дому — Москва</h1>
+      <p>Выберите один из трёх вариантов дизайна сайта.<br>Каждый вариант принципиально отличается по композиции и подаче.</p>
+    </div>
+
+    <div class="variants-grid">
+      <a href="variants/v4/index.html" class="variant-card">
+        <div class="variant-preview" style="background: linear-gradient(135deg, rgba(32,32,25,.25), rgba(32,32,25,.05)), url('assets/denis-massage/hero-01.png'); background-size: cover; background-position: center;">
+          <div class="variant-number">V4</div>
+        </div>
+        <div class="variant-info">
+          <h3 class="variant-title">Редакционный массаж</h3>
+          <p class="variant-description">Новый вариант по композиции референса: светлая сетка, тонкие линии и выразительная типографика.</p>
+          <div class="variant-features"><span class="feature-tag">Новая страница</span><span class="feature-tag">Редакционная сетка</span></div>
+        </div>
+      </a>
+      <!-- Variant 1 -->
+      <a href="variants/v1/index.html" class="variant-card">
+        <div class="variant-preview" style="background: linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 100%), url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&q=80'); background-size: cover; background-position: center;">
+          <div class="variant-number">V1</div>
+        </div>
+        <div class="variant-info">
+          <h3 class="variant-title">Природа и спокойствие</h3>
+          <p class="variant-description">Full-screen hero с залипающим фоном, текст в углу, glassmorphism карточки. Акцент на природу и расслабление.</p>
+          <div class="variant-features">
+            <span class="feature-tag">Hero 180vh</span>
+            <span class="feature-tag">Glassmorphism</span>
+            <span class="feature-tag">Progress dots</span>
+            <span class="feature-tag">Минимализм</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Variant 2 -->
+      <a href="variants/v2/index.html" class="variant-card">
+        <div class="variant-preview" style="background: #7A9B8E;">
+          <div class="variant-number">V2</div>
+        </div>
+        <div class="variant-info">
+          <h3 class="variant-title">Динамичная сетка</h3>
+          <p class="variant-description">Bento-grid hero, карточная структура, testimonial marquee. Современный и энергичный подход с акцентом на визуал.</p>
+          <div class="variant-features">
+            <span class="feature-tag">Bento Grid</span>
+            <span class="feature-tag">Fixed Header</span>
+            <span class="feature-tag">Marquee</span>
+            <span class="feature-tag">Динамика</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Variant 3 -->
+      <a href="variants/v3/index.html" class="variant-card">
+        <div class="variant-preview" style="background: linear-gradient(135deg, #D4B896 0%, #7A9B8E 100%);">
+          <div class="variant-number">V3</div>
+        </div>
+        <div class="variant-info">
+          <h3 class="variant-title">Элегантная типографика</h3>
+          <p class="variant-description">Split-screen hero, крупная типографика, чистые линии. Премиальный и утончённый дизайн с фокусом на текст.</p>
+          <div class="variant-features">
+            <span class="feature-tag">Split Hero</span>
+            <span class="feature-tag">Pills Nav</span>
+            <span class="feature-tag">Timeline</span>
+            <span class="feature-tag">Элегантность</span>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="footer-note">
+      <p>Все варианты следуют единой <a href="DESIGN.md">дизайн-системе</a> и <a href="PRODUCT.md">продуктовой стратегии</a></p>
+    </div>
+  </div>
+</body>
+</html>
