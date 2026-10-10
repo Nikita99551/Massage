@@ -197,6 +197,36 @@ html { scrollbar-color: var(--mint-200) var(--bg-soft); }
 .mobile-bar a { display: block; padding: 16px 10px; text-align: center; background: var(--green-700); color: #fff; font-weight: 600; text-decoration: none; }
 .mobile-bar a:last-child { background: var(--green-900); }
 
+
+/* Иконки: один набор, одна толщина линии */
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+.icon { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.icon--inline { width: 18px; height: 18px; vertical-align: -3px; margin-right: 6px; display: inline-block; }
+.icon--fact { width: 22px; height: 22px; color: var(--green-600); }
+.icon--quote { width: 28px; height: 28px; color: var(--green-500); }
+.icon-tile { display: inline-flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 14px; background: var(--mint-100); color: var(--green-700); flex: none; }
+.icon-tile--sm { width: 44px; height: 44px; border-radius: 12px; }
+.icon-tile--sm .icon { width: 22px; height: 22px; }
+.icon-tile--dark { background: rgba(255, 255, 255, .12); color: #fff; }
+.icon-tile--warn { background: #f3e7c9; color: #8a6a1f; }
+.btn .icon { width: 20px; height: 20px; }
+.card__top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.card__top .tag { align-self: center; }
+.card__row { display: flex; align-items: center; gap: 14px; }
+.card__row h3, .card__row h4, .card__row .h3 { margin: 0; }
+.step__head { display: flex; align-items: center; gap: 10px; }
+.step__head .step__num { width: 28px; height: 28px; font-size: .9rem; background: #fff; color: var(--green-700); border: 2px solid var(--green-700); }
+.how .icon-tile, .step .icon-tile { background: #fff; }
+.section__head--icon { display: grid; gap: 14px; justify-items: start; }
+.facts li { display: flex; align-items: center; gap: 10px; }
+.hero__facts li { grid-template-columns: auto 1fr; align-items: center; gap: 12px; }
+.hero__facts li div { display: grid; gap: 2px; }
+.review { position: relative; }
+.review .icon--quote { margin-bottom: -6px; }
+.contact__phone { display: inline-flex; align-items: center; justify-content: center; gap: 10px; }
+.mobile-bar a { display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+.mobile-bar .icon { width: 20px; height: 20px; }
+
 /* Появление блоков при прокрутке */
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
 .reveal.is-visible { opacity: 1; transform: none; }
@@ -236,6 +266,8 @@ html { scrollbar-color: var(--mint-200) var(--bg-soft); }
   .hero__actions .btn { flex: 1 1 100%; }
   .hero__facts { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 20px; margin-top: 28px; padding-top: 20px; }
   .hero__facts li { align-content: start; }
+  .hero__facts .icon-tile { width: 40px; height: 40px; border-radius: 10px; }
+  .hero__facts .icon-tile .icon { width: 20px; height: 20px; }
   .hero__facts li:last-child { grid-column: 1 / -1; }
   .hero__facts span { font-size: .9rem; }
   .card--flat h4 { font-size: 1.2rem; }
