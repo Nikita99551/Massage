@@ -1,8 +1,30 @@
 // Сайт Дениса: вход первого экрана, расхождение слова при прокрутке (экран закреплён, страница наезжает),
 // появления секций, этапы курса, вкладки услуг, меню на телефоне, шапка, липкая полоса мессенджеров.
+// Защита от встраивания в чужой фрейм (свой домен можно, GitHub Pages не отдаёт X-Frame-Options)
+if (window.top !== window.self) {
+  let sameOrigin = false;
+  try { sameOrigin = window.top.location.origin === window.location.origin; } catch (e) { sameOrigin = false; }
+  if (!sameOrigin) { try { window.top.location = window.location; } catch (e) { document.documentElement.hidden = true; } }
+}
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-requestAnimationFrame(() => requestAnimationFrame(() => document.body.classList.add('is-ready')));
+// Загрузка: ждём картинки первого экрана (не дольше 3,5 с), потом убираем заставку и запускаем вход первого экрана
+const loader = document.querySelector('[data-loader]');
+let started = false;
+const startPage = () => {
+  if (started) return;
+  started = true;
+  const shown = loader && parseFloat(getComputedStyle(loader).opacity) > 0.05;
+  if (loader) {
+    if (shown) { loader.classList.add('is-done'); setTimeout(() => loader.remove(), 900); }
+    else loader.remove();
+  }
+  const delay = shown ? 250 : 0;
+  setTimeout(() => requestAnimationFrame(() => document.body.classList.add('is-ready')), delay);
+};
+if (document.readyState === 'complete') startPage();
+else window.addEventListener('load', startPage);
+setTimeout(startPage, 3500);
 
 const header = document.querySelector('[data-header]');
 const hero = document.querySelector('[data-hero]');
@@ -66,8 +88,9 @@ stages.forEach((stage, i) => {
   btn.addEventListener('click', () => setStage(i));
   btn.addEventListener('mouseenter', () => { if (window.matchMedia('(hover: hover)').matches) setStage(i); });
 });
+// Переключение прокруткой только там, где фото липкое и всегда на экране (планшет и телефон)
 const stageObserver = new IntersectionObserver((entries) => entries.forEach(({ isIntersecting, target }) => {
-  if (isIntersecting) setStage(stages.indexOf(target));
+  if (isIntersecting && window.matchMedia('(max-width: 1100px)').matches) setStage(stages.indexOf(target));
 }), { rootMargin: '-48% 0px -48% 0px' });
 stages.forEach((stage) => stageObserver.observe(stage));
 
@@ -133,6 +156,22 @@ if (track) {
   };
   prev.addEventListener('click', () => track.scrollBy({ left: -step() * 2, behavior: reduceMotion ? 'auto' : 'smooth' }));
   next.addEventListener('click', () => track.scrollBy({ left: step() * 2, behavior: reduceMotion ? 'auto' : 'smooth' }));
+  // Перетаскивание мышкой, как пальцем на телефоне
+  let dragX = 0, dragLeft = 0, dragging = false;
+  track.addEventListener('pointerdown', (e) => {
+    if (e.pointerType !== 'mouse') return;
+    dragging = true; dragX = e.clientX; dragLeft = track.scrollLeft;
+    track.setPointerCapture(e.pointerId);
+  });
+  track.addEventListener('pointermove', (e) => {
+    if (!dragging) return;
+    const dx = e.clientX - dragX;
+    if (Math.abs(dx) > 4) track.classList.add('is-dragging');
+    track.scrollLeft = dragLeft - dx;
+  });
+  const endDrag = () => { dragging = false; track.classList.remove('is-dragging'); };
+  track.addEventListener('pointerup', endDrag);
+  track.addEventListener('pointercancel', endDrag);
   track.addEventListener('scroll', sync, { passive: true });
   window.addEventListener('resize', sync);
   sync();
