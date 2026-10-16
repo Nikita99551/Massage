@@ -8,7 +8,7 @@ if (window.top !== window.self) {
 }
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Загрузка: ждём картинки первого экрана (не дольше 3,5 с), потом убираем заставку и запускаем вход первого экрана
+// Загрузка: ждём только фигуру Дениса (не дольше 1,5 с), потом убираем заставку и запускаем вход первого экрана
 const loader = document.querySelector('[data-loader]');
 let started = false;
 const startPage = () => {
@@ -22,9 +22,10 @@ const startPage = () => {
   const delay = shown ? 250 : 0;
   setTimeout(() => requestAnimationFrame(() => document.body.classList.add('is-ready')), delay);
 };
-if (document.readyState === 'complete') startPage();
-else window.addEventListener('load', startPage);
-setTimeout(startPage, 3500);
+const heroImg = document.querySelector('.hero__figure img');
+if (!heroImg || heroImg.complete) startPage();
+else { heroImg.addEventListener('load', startPage); heroImg.addEventListener('error', startPage); }
+setTimeout(startPage, 1500);
 
 const header = document.querySelector('[data-header]');
 const hero = document.querySelector('[data-hero]');
