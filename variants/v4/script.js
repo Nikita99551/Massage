@@ -89,11 +89,7 @@ stages.forEach((stage, i) => {
   btn.addEventListener('click', () => setStage(i));
   btn.addEventListener('mouseenter', () => { if (window.matchMedia('(hover: hover)').matches) setStage(i); });
 });
-// Переключение прокруткой только там, где фото липкое и всегда на экране (планшет и телефон)
-const stageObserver = new IntersectionObserver((entries) => entries.forEach(({ isIntersecting, target }) => {
-  if (isIntersecting && window.matchMedia('(max-width: 1100px)').matches) setStage(stages.indexOf(target));
-}), { rootMargin: '-48% 0px -48% 0px' });
-stages.forEach((stage) => stageObserver.observe(stage));
+// На планшете и телефоне этапы — карусель с картинками, переключать нечего
 
 // Вкладки услуг: фото-сетка или состав курса
 const tabs = [...document.querySelectorAll('[role="tab"]')];

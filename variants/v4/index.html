@@ -15,7 +15,7 @@
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="ru_RU">
   <meta name="twitter:card" content="summary_large_image">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-Du+OJKJSbdUgz5nrHeWWINvez6XKDDU/tyj/5c2uvwo='; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-Du+OJKJSbdUgz5nrHeWWINvez6XKDDU/tyj/5c2uvwo='; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
   <script>document.documentElement.classList.add('js')</script>
   <link rel="preload" href="../../assets/denis-massage/denis-figure.webp" as="image" fetchpriority="high">
   <link rel="preload" href="../../assets/denis-massage/hero-table.webp" as="image">
@@ -25,7 +25,7 @@
   <link rel="icon" href="../../favicon.ico" sizes="32x32">
   <link rel="apple-touch-icon" href="../../assets/icons/icon-180.png">
   <link rel="manifest" href="../../assets/icons/site.webmanifest">
-  <link rel="stylesheet" href="style.css?v=20261016">
+  <link rel="stylesheet" href="style.css?v=20261017">
 </head>
 <body>
   <div class="loader" data-loader aria-hidden="true">
@@ -74,7 +74,8 @@
   <main id="main">
 
     <!-- 1. Первый экран: большое слово, стол и фигура перед ним. Закреплён, страница наезжает сверху -->
-    <section class="hero" id="top" data-hero>
+    <span id="top"></span>
+    <section class="hero" data-hero>
       <p class="hero__motto">Тело работает целиком.<br>Восстановление — это путь.<br>Результат держится.</p>
       <h1 class="hero__word" aria-label="Массаж с выездом на дом в Краснодаре">
         <span class="hero__half hero__half--l" aria-hidden="true">МАС</span><span class="hero__half hero__half--r" aria-hidden="true">САЖ</span>
@@ -176,6 +177,8 @@
         <ol class="stages">
           <li class="stage is-active" data-stage="0">
             <button type="button" class="stage__btn" aria-pressed="true">
+              <img class="stage__img" src="../../assets/denis-massage/course-meet.webp" alt="" loading="lazy">
+              <span class="stage__num">Этап 1 из 4</span>
               <h3>Знакомство</h3>
               <p>Разговор о самочувствии, первый осмотр и план: что делаем и в каком порядке</p>
               <svg class="icon stage__arrow"><use href="#i-arrow"/></svg>
@@ -183,6 +186,8 @@
           </li>
           <li class="stage" data-stage="1">
             <button type="button" class="stage__btn" aria-pressed="false">
+              <img class="stage__img" src="../../assets/denis-massage/course-food.webp" alt="" loading="lazy">
+              <span class="stage__num">Этап 2 из 4</span>
               <h3>Подготовка</h3>
               <p>Питание: убираем то, что мешает. Решаем, нужно ли очищение именно вам</p>
               <svg class="icon stage__arrow"><use href="#i-arrow"/></svg>
@@ -190,6 +195,8 @@
           </li>
           <li class="stage" data-stage="2">
             <button type="button" class="stage__btn" aria-pressed="false">
+              <img class="stage__img" src="../../assets/denis-massage/course-massage-2.webp" alt="" loading="lazy">
+              <span class="stage__num">Этап 3 из 4</span>
               <h3>Курс массажа</h3>
               <p>Массаж живота, медовый и баночный, работа с мышцами. Регулярные встречи по плану</p>
               <svg class="icon stage__arrow"><use href="#i-arrow"/></svg>
@@ -197,6 +204,8 @@
           </li>
           <li class="stage" data-stage="3">
             <button type="button" class="stage__btn" aria-pressed="false">
+              <img class="stage__img" src="../../assets/denis-massage/course-result.webp" alt="" loading="lazy">
+              <span class="stage__num">Этап 4 из 4</span>
               <h3>Закрепление</h3>
               <p>Поддерживающие сеансы и привычки, которые остаются с вами после курса</p>
               <svg class="icon stage__arrow"><use href="#i-arrow"/></svg>
@@ -222,12 +231,12 @@
     <!-- 6. Услуги: вкладки, фото-сетка или состав курса -->
     <section class="services" id="services" data-tabs>
       <div class="services__head">
-        <div class="tabs" role="tablist" aria-label="Услуги">
-          <button type="button" role="tab" aria-selected="true" aria-controls="tab-sessions" id="t-sessions" class="tab is-active">Сеансы и цены</button>
-          <span class="tabs__slash" aria-hidden="true">/</span>
-          <button type="button" role="tab" aria-selected="false" aria-controls="tab-course" id="t-course" class="tab" tabindex="-1">Что входит в курс</button>
-        </div>
+        <h2>Услуги</h2>
         <p class="services__note">Цены предварительные, уточняются до записи</p>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Что показать">
+        <button type="button" role="tab" aria-selected="true" aria-controls="tab-sessions" id="t-sessions" class="tab is-active">Сеансы и цены</button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="tab-course" id="t-course" class="tab" tabindex="-1">Что входит в курс</button>
       </div>
 
       <div class="bento" id="tab-sessions" role="tabpanel" aria-labelledby="t-sessions">
@@ -396,6 +405,6 @@
     <a href="https://wa.me/79609505530?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%BC%D0%B0%D1%81%D1%81%D0%B0%D0%B6" target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg>WhatsApp</a>
   </div>
 
-  <script src="script.js?v=20261016"></script>
+  <script src="script.js?v=20261017"></script>
 </body>
 </html>
