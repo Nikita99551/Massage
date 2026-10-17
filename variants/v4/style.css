@@ -343,6 +343,9 @@ a.why__card:hover .why__go .icon { transform: translate(2px, -2px); }
 .reviews__track.is-dragging { cursor: grabbing; scroll-snap-type: none; user-select: none; }
 .reviews__track.is-dragging .review { pointer-events: none; }
 .review { flex: 0 0 min(400px, 82vw); scroll-snap-align: start; padding: 28px 30px; border-radius: var(--radius); background: var(--bg-2); display: flex; flex-direction: column; gap: 18px; }
+.review__head { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.review__stars { display: inline-flex; gap: 2px; color: #d9a537; }
+.review__stars .icon { width: 15px; height: 15px; fill: currentColor; stroke: none; }
 .review__tag { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--green-700); }
 .review p { font-size: 1.05rem; line-height: 1.5; }
 .review p::before { content: "«"; } .review p::after { content: "»"; }
@@ -449,7 +452,9 @@ a.why__card:hover .why__go .icon { transform: translate(2px, -2px); }
   .how__list li { padding-top: 0; }
   .how__list li::before { display: block; left: -48px; top: 14px; transform: none; }
   .how__list b { position: static; padding: 0 0 4px; font-size: 2.4rem; background: none; }
-  .limits { grid-template-columns: 1fr; }
+  .limits { grid-template-columns: minmax(0, 1fr); }
+  .panel { min-width: 0; }
+  .panel h2 { min-width: 0; overflow-wrap: anywhere; }
   .story { grid-template-columns: 1fr; }
   .story__photo { aspect-ratio: 4 / 3; }
 }
@@ -511,7 +516,8 @@ a.why__card:hover .why__go .icon { transform: translate(2px, -2px); }
   .reviews__ctl { width: 100%; justify-content: space-between; }
   .reviews__track { scroll-padding-inline: 16px; }
   .reviews__bar { margin-left: 16px; margin-right: 16px; }
-  .panel { padding: 26px 20px; grid-template-columns: 1fr; gap: 20px; }
+  .panel { padding: 26px 20px; grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .panel--sand h2 { font-size: 1.45rem; }
   .panel__photo { grid-column: 1; grid-row: auto; width: 100%; aspect-ratio: 4 / 5; max-width: 320px; }
   .panel__items, .panel--green .panel__items { grid-column: 1; grid-template-columns: 1fr; gap: 14px; }
   .panel .btn, .panel__note { grid-column: 1; }
